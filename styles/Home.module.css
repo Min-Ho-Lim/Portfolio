@@ -79,6 +79,61 @@
   color: #fffffe;
 }
 
+/* create responsive css */
+@media (max-width: 500px) {
+  .iconBarContainer {
+    position: absolute;
+    bottom: 3rem;
+    /* align children horizontally */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .iconBarStickBar {
+    /* position: absolute; */
+    width: 25vw;
+    border: 1.5px solid #fffffe;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+}
+
+@media (min-width: 500px) {
+  .iconBarContainer {
+    position: absolute;
+    left: 3rem;
+    /* align children vertically */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .iconBarStickBar {
+    /* position: absolute; */
+    left: 3rem;
+    width: 0px;
+    height: 25vh;
+    border: 3px solid #fffffe;
+    transform: rotate(-0.1deg);
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+}
+
+.icon {
+  /* change mouse cursor */
+  cursor: pointer;
+}
+
 /* Starfall effect is from https://codesandbox.io/s/w96ut */
 @keyframes animateBg {
   0%,
