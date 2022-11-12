@@ -11,6 +11,19 @@
   z-index: 1;
 }
 
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+  /* center vertically */
+  height: 100vh;
+  /* hide overflow */
+  overflow: hidden;
+}
+
 .title {
   display: flex;
   flex-direction: column;
@@ -20,7 +33,6 @@
   gap: 10px;
   /* center vertically */
   height: 100vh;
-  animation: animateBg 50s linear infinite;
 }
 
 .titlegroup {
@@ -56,12 +68,8 @@
 }
 
 .subtitle {
-  /* position: absolute;
-  width: 652px;
-  height: 116px; */
   left: calc(50% - 652px / 2);
   top: calc(50% - 116px / 2 - 1913.5px);
-
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -71,17 +79,7 @@
   color: #fffffe;
 }
 
-/* .section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(180deg, #16161a 61.51%, #3d2c73 100%);
-  background-position-x: center;
-  background-size: cover;
-  animation: animateBg 50s linear infinite;
-} */
+/* Starfall effect is from https://codesandbox.io/s/w96ut */
 @keyframes animateBg {
   0%,
   100% {
@@ -101,6 +99,7 @@
   border-radius: 50%;
   box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
     0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1);
+
   animation: animate 3s linear infinite;
 }
 .span::before {
@@ -115,7 +114,7 @@
 @keyframes animate {
   0% {
     transform: rotate(315deg) translateX(0);
-    opacity: 1;
+    opacity: 0;
   }
   70% {
     opacity: 1;
@@ -134,72 +133,90 @@
 }
 
 .span:nth-child(2) {
-  top: 0;
-  right: 80px;
+  top: calc(50% + 50px);
+  right: calc(50% + 40px);
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 0.2s;
   animation-duration: 3s;
 }
 
 .span:nth-child(3) {
-  top: 80px;
-  right: 0px;
+  top: calc(50% - 130px);
+  right: 0;
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 0.4s;
   animation-duration: 2s;
 }
 
 .span:nth-child(4) {
   top: 0;
-  right: 180px;
+  right: calc(50% -90px);
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 0.6s;
   animation-duration: 1.5s;
 }
 
 .span:nth-child(5) {
   top: 0;
-  right: 400px;
+  right: calc(50% + 250px);
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 0.8s;
   animation-duration: 2.5s;
 }
 
 .span:nth-child(6) {
   top: 0;
-  right: 600px;
+  right: calc(50% +70px);
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 1s;
   animation-duration: 3s;
 }
 .span:nth-child(7) {
-  top: 300px;
+  top: calc(50% + 120px);
   right: 0px;
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 1s;
   animation-duration: 1.75s;
 }
 
 .span:nth-child(8) {
   top: 0px;
-  right: 700px;
+  right: calc(50% + 190px);
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 1.4s;
   animation-duration: 1.25s;
 }
 
 .span:nth-child(9) {
   top: 0px;
-  right: 1000px;
+  right: calc(50% + 10px);
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 0.75s;
   animation-duration: 2.25s;
 }
 
 .span:nth-child(10) {
   top: 0px;
-  right: 1000px;
+  right: calc(50% - 220px);
   left: initial;
+  /* hide it before animation starts */
+  opacity: 0;
   animation-delay: 2.75s;
   animation-duration: 2.25s;
 }
