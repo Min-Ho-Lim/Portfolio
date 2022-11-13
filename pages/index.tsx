@@ -18,20 +18,7 @@ export default function Home() {
 
       <main>
         <MainPage />
-        <ScrollDown />
-        <div className={styles.secondPage}>
-          <h1>About Me</h1>
-          <h1>About Me</h1>
-          <h1>About Me</h1>
-          <h1>About Me</h1>
-          <h1>About Me</h1>
-          <h1>About Me</h1>
-        </div>
       </main>
-      {/* create another page */}
-      {/* <div className={styles.secondPage}>
-        <a className={styles.secondPageContentLeftTopText}>About Me</a>
-      </div> */}
     </div>
   );
 }
