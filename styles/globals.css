@@ -3,7 +3,7 @@ html {
   height: 100%;
   background: linear-gradient(180deg, #16161a 61.51%, #3d2c73 100%);
   scroll-behavior: smooth;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 body {
   padding: 0;

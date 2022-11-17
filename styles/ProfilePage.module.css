@@ -1,0 +1,15 @@
+.background {
+  /* import top-wave.svg and set as background */
+  background: url("../public/top-wave.svg") no-repeat center;
+  background-size: cover;
+  /* set height to 100% of viewport */
+  height: 100vh;
+  /* set width to 100% of viewport */
+  /* width: 100vw; */
+  /* center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* center horizontally */
+  text-align: center;
+}
