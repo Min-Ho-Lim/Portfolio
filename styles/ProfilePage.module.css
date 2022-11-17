@@ -48,6 +48,7 @@
 
 .profileBottomText {
   padding-top: 1rem;
+  padding-bottom: 1rem;
   /* paragraphe 1 */
 
   font-family: "Arial";
@@ -122,10 +123,18 @@
     flex-direction: column-reverse;
   }
 
-  .profileImageContainer {
-    margin-left: 10vw;
-    margin-top: 5vh;
-    margin-bottom: 10vh;
+  @media (min-height: 790px) {
+    .profileImageContainer {
+      margin-left: 10vw;
+      margin-top: 5vh;
+      margin-bottom: 10vh;
+    }
+  }
+
+  @media (max-height: 790px) {
+    .profileImageContainer {
+      display: none;
+    }
   }
 
   .profile {
@@ -133,9 +142,6 @@
     width: 30vw;
     height: 40vw;
     position: absolute;
-    /* place right side */
-    /* position: absolute; */
-    /* set margin to 10% of viewport */
     /* set border radius to 50% */
     border-radius: 10%;
     /* set border to 1px solid white */
