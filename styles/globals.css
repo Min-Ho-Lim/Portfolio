@@ -22,6 +22,29 @@ a {
   box-sizing: border-box;
 }
 
+.swiper-pagination-bullet {
+  width: 50px !important;
+  height: 15px !important;
+
+  background: #72757e !important;
+  border-radius: 100px !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 100px !important;
+  height: 15px !important;
+
+  background: #7f5af0 !important;
+  border-radius: 100px !important;
+}
+
+.swiper-pagination-bullets {
+  bottom: 10vh !important;
+}
+
+.swiper-button-next {
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
