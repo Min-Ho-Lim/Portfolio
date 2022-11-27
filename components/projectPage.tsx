@@ -10,13 +10,44 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const SingleProject = () => {
-  return (
-    <div className={styles.projectContainer}>
+type ProjectProps = {
+  title: string;
+  description: string;
+  image: string;
+  githubLink?: string;
+  demoLink?: string;
+};
+
+/**
+ * If all of the projects use the same decorations and styles, then it would be quite
+ * boring to see. So, I decided to depend on its index use the different decorations.
+ * @param isEven Check if the project is even or odd
+ * @returns return with decorations depends on the project index is even or odd
+ */
+const GenerateDecorations = (isEven: boolean) => {
+  return !isEven ? (
+    <>
       <div className={styles.boxContainer}>
         <span className={styles.boxDecoration} />
         <span className={styles.boxDecorationOutline} />
       </div>
+      <span className={styles.menphis} />
+    </>
+  ) : (
+    <>
+      <div className={styles.boxContainerOther}>
+        <span className={styles.boxDecorationOther} />
+        <span className={styles.boxDecorationOutlineOther} />
+      </div>
+      <span className={styles.menphisOther} />
+    </>
+  );
+};
+
+const DisplayProject = (isEven: boolean, props: ProjectProps) => {
+  return (
+    <div className={styles.projectContainer}>
+      {GenerateDecorations(isEven)}
       <div className={styles.carousel}>
         <Image
           src="/van-life.svg"
@@ -30,9 +61,17 @@ const SingleProject = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         </a>
       </div>
-      <span className={styles.menphis} />
     </div>
   );
+};
+
+// This is just a temporary props for showing the project page
+// TODO: Remove this
+const temporaryProps = {
+  title: "VanLife",
+  description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  image: "/van-life.svg",
 };
 
 export default function ProjectPage() {
@@ -43,6 +82,7 @@ export default function ProjectPage() {
         <a className={styles.mainText}>My Personal Projects</a>
       </div>
 
+      {/* TODO: Take props from other files */}
       <Swiper
         cssMode={true}
         navigation={true}
@@ -52,8 +92,9 @@ export default function ProjectPage() {
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         className={styles.swiper}
       >
-        <SwiperSlide>{SingleProject()}</SwiperSlide>
-        <SwiperSlide>{SingleProject()}</SwiperSlide>
+        <SwiperSlide>{DisplayProject(false, temporaryProps)}</SwiperSlide>
+        <SwiperSlide>{DisplayProject(true, temporaryProps)}</SwiperSlide>
+        <SwiperSlide>{DisplayProject(false, temporaryProps)}</SwiperSlide>
       </Swiper>
     </div>
   );

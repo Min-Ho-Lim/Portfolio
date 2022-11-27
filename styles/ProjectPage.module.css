@@ -12,6 +12,7 @@
   align-items: center;
   width: 100%;
   flex-direction: column;
+  margin-top: 5vh;
 }
 
 .topText {
@@ -112,6 +113,31 @@
   z-index: 2;
 }
 
+.boxContainerOther {
+  position: absolute;
+  top: 20vh;
+  right: 13vw;
+}
+
+.boxDecorationOther {
+  position: absolute;
+  width: max(min(2vw, 40px), 20px);
+  height: max(min(2vw, 40px), 20px);
+  background: #7f5af0;
+  z-index: 1;
+}
+
+.boxDecorationOutlineOther {
+  position: absolute;
+  box-sizing: border-box;
+  left: 1vw;
+  top: -1vw;
+  width: max(min(2vw, 40px), 20px);
+  height: max(min(2vw, 40px), 20px);
+  border: 3px solid #2cb67d;
+  z-index: 2;
+}
+
 .menphis {
   background: url("../public/menphis.svg") no-repeat center;
   background-size: cover;
@@ -120,6 +146,16 @@
   position: absolute;
   top: 58vh;
   right: 14vw;
+}
+
+.menphisOther {
+  background: url("../public/menphis.svg") no-repeat center;
+  background-size: cover;
+  width: 15vw;
+  height: 10vw;
+  position: absolute;
+  top: 58vh;
+  left: 14vw;
 }
 
 .navContainer {
