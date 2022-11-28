@@ -1,0 +1,9 @@
+.SummaryPageContainer {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  /* background: linear-gradient(180deg, #16161a 61.51%, #3d2c73 100%); */
+  background: url("../public/layered-waves.svg") no-repeat center;
+  background-size: cover;
+}

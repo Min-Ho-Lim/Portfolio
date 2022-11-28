@@ -7,6 +7,7 @@ import MainPage from "../components/mainPage";
 import ScrollDown from "../components/scrollDown";
 import ProfilePage from "../components/profilePage";
 import ProjectPage from "../components/projectPage";
+import SummaryPage from "../components/summaryPage";
 
 const arrayOfTen = Array(10).fill(0);
 
@@ -22,6 +23,7 @@ export default function Home() {
         <MainPage />
         <ProfilePage />
         <ProjectPage />
+        <SummaryPage />
       </main>
     </div>
   );
