@@ -13,7 +13,8 @@
 @media (min-width: 500px) {
   .summaryContainer {
     position: relative;
-    right: 20vw;
+    /* right: 20vw; */
+    padding-right: 5vw;
   }
 
   .summaryTextContainer {
@@ -97,7 +98,7 @@
   line-height: 39px;
 
   /* title and button text */
-
+  padding-top: 5rem;
   color: #fffffe;
 }
 
@@ -109,8 +110,41 @@
   line-height: 23px;
   text-align: center;
 
-  /* paragraph */
+  max-width: fit-content;
 
+  /* paragraph */
   color: #94a1b2;
-  max-width: 20vw;
+  padding-top: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.contactInputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 5rem;
+}
+
+.contactSendButton {
+  background: #7f5af0;
+  border-radius: 100px;
+  padding: 1rem 2rem;
+}
+
+.contactSendButtonText {
+  font-family: "Clash Display Variable";
+  font-style: normal;
+  font-weight: 634;
+  font-size: 22px;
+  line-height: 27px;
+  color: #fffffe;
+}
+
+.contactSendImage {
+  position: relative;
+  top: 5px;
+  right: 10px;
 }
