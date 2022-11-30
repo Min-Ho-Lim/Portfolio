@@ -10,11 +10,13 @@ const InputField = ({
   value,
   onChange,
   placeholder,
+  isInput,
 }: {
   label: string;
   value: string;
   onChange: undefined;
   placeholder: string;
+  isInput: boolean;
 }) => {
   return (
     <div className={inputStyles.field}>
@@ -22,13 +24,25 @@ const InputField = ({
         <label htmlFor="first-name" className={inputStyles["ha-screen-reader"]}>
           {label}
         </label>
-        <input
-          id={label}
-          className={inputStyles.field__input}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-        ></input>
+        {isInput ? (
+          <input
+            id={label}
+            className={`${inputStyles.field__input} ${styles.contactInputBox}`}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+          ></input>
+        ) : (
+          <textarea
+            id={label}
+            // className={inputStyles.field__input}
+            className={`${inputStyles.field__input} ${styles.contactTextArea}`}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            // style={`${inputStyles.contactTextArea}`}
+          ></textarea>
+        )}
         <span className={inputStyles["field__label-wrap"]} aria-hidden="true">
           <span className={inputStyles.field__label}>{label}</span>
         </span>
@@ -39,6 +53,8 @@ const InputField = ({
 
 export default function SummaryPage() {
   const [email, setEmail] = useState("");
+  const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
 
   return (
     <div className={styles.SummaryPageContainer}>
@@ -76,32 +92,38 @@ export default function SummaryPage() {
                 setEmail(e.value);
               }}
               placeholder="eg. minholim@outlook.com"
+              isInput={true}
             />{" "}
             <InputField
               label="Title"
-              value=""
-              onChange={() => {}}
+              value={title}
+              onChange={(e) => {
+                setTitle(e.value);
+              }}
               placeholder="eg. What an Awesome Website!"
+              isInput={true}
             />
             <InputField
               label="Context"
-              value=""
-              onChange={() => {}}
+              value={message}
+              onChange={(e) => {
+                setMessage(e.value);
+              }}
               placeholder="eg. Do you want to build a snowman?"
+              isInput={false}
             />
           </div>
 
-          <span className={styles.contactSendButton}>
+          <button className={styles.contactSendButton} data-tip="Send an Email">
             <Image
               src="/sent-icon.svg"
               alt="Sent Icon"
               width={25}
               height={25}
-              data-tip="Send the Email"
               className={styles.contactSendImage}
             />
             <a className={styles.contactSendButtonText}>Send</a>
-          </span>
+          </button>
         </div>
       </div>
     </div>

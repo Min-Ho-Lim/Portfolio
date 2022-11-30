@@ -1,16 +1,26 @@
-.SummaryPageContainer {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  /* background: linear-gradient(180deg, #16161a 61.51%, #3d2c73 100%); */
-  background: url("../public/layered-waves.svg") no-repeat center;
-  background-size: cover;
-  /* text alignment to middle */
-  text-align: center;
-}
+@media (min-width: 1000px) {
+  .SummaryPageContainer {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url("../public/layered-waves.svg") no-repeat center;
+    background-size: cover;
+    text-align: center;
+  }
 
-@media (min-width: 500px) {
+  .contactInputBox {
+    display: flex;
+    width: max(min(30vw, 200px), 400px) !important;
+    height: 100% !important;
+  }
+
+  .contactTextArea {
+    display: flex;
+    width: max(min(30vw, 200px), 400px) !important;
+    height: 20vh !important;
+  }
+
   .summaryContainer {
     position: relative;
     /* right: 20vw; */
@@ -25,10 +35,34 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
+  .SummaryPageContainer {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url("../public/layered-waves.svg") no-repeat center;
+    background-size: cover;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .contactInputBox {
+    display: flex;
+    width: 50vw !important;
+    height: "100%" !important;
+  }
+
+  .contactTextArea {
+    display: flex;
+    width: 50vw !important;
+    height: 10vh !important;
+  }
+
   .summaryContainer {
     position: relative;
-    top: 10vh;
+    /* top: 10vh; */
+    bottom: 10vh;
   }
 
   .summaryTextContainer {
@@ -94,9 +128,8 @@
   font-family: "Clash Display Variable";
   font-style: normal;
   font-weight: 564;
-  font-size: 32px;
   line-height: 39px;
-
+  font-size: max(min(3vw, 32px), 20px);
   /* title and button text */
   padding-top: 5rem;
   color: #fffffe;
@@ -106,17 +139,17 @@
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 23px;
+  font-size: max(min(2vw, 20px), 12px);
+  /* line-height: 23px; */
   text-align: center;
 
   max-width: fit-content;
 
   /* paragraph */
   color: #94a1b2;
-  padding-top: 1rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-top: 2vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 .contactInputContainer {
@@ -124,21 +157,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding: 5rem;
+  gap: 1vh;
+  padding: 5vw;
 }
 
 .contactSendButton {
+  position: relative;
   background: #7f5af0;
   border-radius: 100px;
-  padding: 1rem 2rem;
+  padding: max(min(3vw, 1rem), 0.5rem) max(min(8vw, 3rem), 1rem);
+  cursor: pointer;
+  top: 1.5rem;
+  bottom: 1.5rem;
 }
 
 .contactSendButtonText {
   font-family: "Clash Display Variable";
   font-style: normal;
   font-weight: 634;
-  font-size: 22px;
+  font-size: max(min(2vw, 22px), 16px);
   line-height: 27px;
   color: #fffffe;
 }
@@ -146,5 +183,5 @@
 .contactSendImage {
   position: relative;
   top: 5px;
-  right: 10px;
+  right: 15px;
 }

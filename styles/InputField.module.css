@@ -28,7 +28,6 @@ HELPERS
 
 .field__input {
   --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #ffffff);
-
   background-color: transparent;
   border-radius: 0;
   border: none;
@@ -56,7 +55,7 @@ HELPERS
 
 .field {
   --uiFieldBorderWidth: var(--fieldBorderWidth, 3px);
-  --uiFieldPaddingRight: var(--fieldPaddingRight, 10rem);
+  --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);
   --uiFieldPaddingLeft: var(--fieldPaddingLeft, 1rem);
   --uiFieldBorderColorActive: var(
     --fieldBorderColorActive,
@@ -69,6 +68,9 @@ HELPERS
 }
 
 .field__input {
+  display: flex;
+  color: #ffffff;
+
   box-sizing: border-box;
   width: var(--fieldWidth, 100%);
   height: var(--fieldHeight, 3rem);
@@ -143,9 +145,6 @@ HELPERS
 
   font-family: "Arial";
   font-style: normal;
-  font-weight: 400;
-  /* font-size: 25px; */
-  line-height: 29px;
   color: #94a1b2;
 }
 
