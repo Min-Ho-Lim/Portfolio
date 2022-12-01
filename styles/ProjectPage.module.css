@@ -64,6 +64,7 @@
   display: flex;
   position: absolute;
   width: clamp(300px, 50vw, 500px);
+  height: clamp(300px, 50vw, 500px);
   top: -10vh;
 }
 
@@ -71,8 +72,9 @@
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: max(min(3vw, 32px), 18px);
   color: #ffffff;
+  text-align: center;
 }
 
 .projectTitle {
@@ -86,6 +88,24 @@
   line-height: 68px;
   text-align: center;
   color: #fffffe;
+}
+@media (min-width: 500px) {
+  .buttonGroup {
+    display: flex;
+    position: absolute;
+    bottom: 20vh;
+    gap: 1vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .buttonGroup {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 18vh;
+    gap: 1vw;
+  }
 }
 
 .boxContainer {
