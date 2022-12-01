@@ -3,6 +3,10 @@ import Image from "next/image";
 import styles from "../styles/ProjectPage.module.css";
 import ReactTooltip from "react-tooltip";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import { AwesomeButton, AwesomeButtonSocial } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+
 // core version + navigation, pagination modules:
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 // import Swiper and modules styles
@@ -14,8 +18,8 @@ type ProjectProps = {
   title: string;
   description: string;
   image: string;
-  githubLink?: string;
-  demoLink?: string;
+  github?: string;
+  demo?: string;
 };
 
 /**
@@ -50,28 +54,39 @@ const DisplayProject = (isEven: boolean, props: ProjectProps) => {
       {GenerateDecorations(isEven)}
       <div className={styles.carousel}>
         <Image
-          src="/van-life.svg"
-          alt="Project-1"
+          src={props.image}
+          alt={props.title}
           width={500}
           height={500}
           className={styles.projectImage}
         />
-        <a className={styles.projectTitle}>VanLife</a>
-        <a className={styles.projectDescription}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        </a>
+        <a className={styles.projectTitle}>{props.title}</a>
+        <a className={styles.projectDescription}>{props.description}</a>
+
+        <div className={styles.buttonGroup}>
+          {props.github && (
+            <AwesomeButtonSocial type="github" href={props.github}>
+              Source Code
+            </AwesomeButtonSocial>
+          )}
+          {props.demo && (
+            <AwesomeButton type="instagram" size="medium" href={props.demo}>
+              Demo
+            </AwesomeButton>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
-// This is just a temporary props for showing the project page
-// TODO: Remove this
-const temporaryProps = {
-  title: "VanLife",
+const projectOneProps = {
+  title: "Protfolio Website",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
-  image: "/van-life.svg",
+    "My personal portfolio website follow with agile methodology. No extra CSS library. Created from the complete scratch. You are just seeing the demo!",
+  image: "/project-1.png",
+  github: "https://github.com/Min-Ho-Lim/Portfolio",
+  demo: "#",
 };
 
 export default function ProjectPage() {
@@ -92,9 +107,9 @@ export default function ProjectPage() {
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         className={styles.swiper}
       >
-        <SwiperSlide>{DisplayProject(false, temporaryProps)}</SwiperSlide>
-        <SwiperSlide>{DisplayProject(true, temporaryProps)}</SwiperSlide>
-        <SwiperSlide>{DisplayProject(false, temporaryProps)}</SwiperSlide>
+        <SwiperSlide>{DisplayProject(false, projectOneProps)}</SwiperSlide>
+        {/* <SwiperSlide>{DisplayProject(true, temporaryProps)}</SwiperSlide>
+        <SwiperSlide>{DisplayProject(false, temporaryProps)}</SwiperSlide> */}
       </Swiper>
     </div>
   );
