@@ -1,0 +1,34 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #16161a 1.51%, #3d2c73 100%);
+  flex-direction: column;
+}
+
+.copyRight {
+  color: white;
+  padding: 3vh;
+  /* font-family: "Clash Display Variable"; */
+  font-style: normal;
+  font-size: max(min(1vw, 20px), 14px);
+}
+
+.timeo {
+  color: #7f5af0;
+  font-style: bold;
+  font-size: max(min(1vw, 20px), 14px);
+  font-weight: 800;
+}
+
+.minholim {
+  background: linear-gradient(90deg, #5aeaf0 0%, #7f5af0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* font-family: "Clash Display Variable"; */
+  font-style: bold;
+  font-size: max(min(1vw, 20px), 14px);
+  font-weight: 800;
+  text-align: center;
+}
