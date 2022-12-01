@@ -50,16 +50,14 @@ const DisplayProject = (isEven: boolean, props: ProjectProps) => {
       {GenerateDecorations(isEven)}
       <div className={styles.carousel}>
         <Image
-          src="/van-life.svg"
-          alt="Project-1"
+          src={props.image}
+          alt={props.title}
           width={500}
           height={500}
           className={styles.projectImage}
         />
-        <a className={styles.projectTitle}>VanLife</a>
-        <a className={styles.projectDescription}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        </a>
+        <a className={styles.projectTitle}>{props.title}</a>
+        <a className={styles.projectDescription}>{props.description}</a>
       </div>
     </div>
   );
@@ -72,6 +70,13 @@ const temporaryProps = {
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
   image: "/van-life.svg",
+};
+
+const projectOneProps = {
+  title: "Protfolio Website",
+  description:
+    "My personal portfolio website follow with agile methodology. No extra CSS library. Created from the complete scratch. You are just seeing the demo!",
+  image: "/project-1.png",
 };
 
 export default function ProjectPage() {
@@ -92,9 +97,9 @@ export default function ProjectPage() {
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         className={styles.swiper}
       >
-        <SwiperSlide>{DisplayProject(false, temporaryProps)}</SwiperSlide>
-        <SwiperSlide>{DisplayProject(true, temporaryProps)}</SwiperSlide>
-        <SwiperSlide>{DisplayProject(false, temporaryProps)}</SwiperSlide>
+        <SwiperSlide>{DisplayProject(false, projectOneProps)}</SwiperSlide>
+        {/* <SwiperSlide>{DisplayProject(true, temporaryProps)}</SwiperSlide>
+        <SwiperSlide>{DisplayProject(false, temporaryProps)}</SwiperSlide> */}
       </Swiper>
     </div>
   );

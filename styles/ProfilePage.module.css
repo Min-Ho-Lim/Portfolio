@@ -77,7 +77,7 @@
 
   .profile {
     /* background-size: cover; */
-    width: 15vw;
+    width: 18vw;
     height: 20vw;
 
     /* place right side */
@@ -106,7 +106,7 @@
   .profileBackBorder {
     box-sizing: border-box;
     position: absolute;
-    width: 15vw;
+    width: 18vw;
     height: 20vw;
     border: 3px solid #ffffff;
     left: calc(100% - 2.5vw);

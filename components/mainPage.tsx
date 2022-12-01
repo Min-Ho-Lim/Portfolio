@@ -54,7 +54,9 @@ export default function MainPage() {
         </p>
 
         <div className={styles.mainButton}>
-          <a className={styles.mainButtonText}>My Résumé</a>
+          <a className={styles.mainButtonText} href="/Resume-Min-Ho-Lim.pdf">
+            My Résumé
+          </a>
         </div>
 
         <ScrollDown />
