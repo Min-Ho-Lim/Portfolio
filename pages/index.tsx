@@ -4,12 +4,10 @@ import styles from "../styles/Home.module.css";
 import ReactTooltip from "react-tooltip";
 
 import MainPage from "../components/mainPage";
-import ScrollDown from "../components/scrollDown";
 import ProfilePage from "../components/profilePage";
 import ProjectPage from "../components/projectPage";
 import SummaryPage from "../components/summaryPage";
-
-const arrayOfTen = Array(10).fill(0);
+import Footer from "../components/footer";
 
 export default function Home() {
   return (
@@ -25,6 +23,10 @@ export default function Home() {
         <ProjectPage />
         <SummaryPage />
       </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
