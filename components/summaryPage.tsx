@@ -3,7 +3,42 @@ import styles from "../styles/SummaryPage.module.css";
 import inputStyles from "../styles/InputField.module.css";
 import ReactTooltip from "react-tooltip";
 import IconBar from "./iconBar";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import emailjs from "emailjs-com";
+import Popup from "reactjs-popup";
+
+const isValidEmail = (email: string) => {
+  const regex =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(String(email).toLowerCase());
+};
+
+const onSubmit = (email: string, title: string, message: string) => {
+  console.log(email, title, message);
+  if (title && email && message) {
+    const serviceId = process.env.SERVICEID;
+    const templateId = process.env.TEMPLATEID;
+    const userId = process.env.USERID;
+    const templateParams = {
+      title,
+      email,
+      message,
+    };
+
+    console.log(serviceId, templateId, templateParams, userId);
+
+    const result = emailjs
+      .send(serviceId, templateId, templateParams, userId)
+      .then((response) => {
+        return true;
+      })
+      .then((error) => {
+        return false;
+      });
+    return result;
+  }
+  return false;
+};
 
 const InputField = ({
   label,
@@ -14,7 +49,7 @@ const InputField = ({
 }: {
   label: string;
   value: string;
-  onChange: undefined;
+  onChange: Dispatch<SetStateAction<string>>;
   placeholder: string;
   isInput: boolean;
 }) => {
@@ -30,17 +65,15 @@ const InputField = ({
             className={`${inputStyles.field__input} ${styles.contactInputBox}`}
             placeholder={placeholder}
             value={value}
-            onChange={onChange}
+            onChange={(e) => onChange(e.target.value)}
           ></input>
         ) : (
           <textarea
             id={label}
-            // className={inputStyles.field__input}
             className={`${inputStyles.field__input} ${styles.contactTextArea}`}
             placeholder={placeholder}
             value={value}
-            onChange={onChange}
-            // style={`${inputStyles.contactTextArea}`}
+            onChange={(e) => onChange(e.target.value)}
           ></textarea>
         )}
         <span className={inputStyles["field__label-wrap"]} aria-hidden="true">
@@ -55,6 +88,14 @@ export default function SummaryPage() {
   const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
+  const [sentEmail, setSentEmail] = useState(false);
+  const closeModal = () => setSentEmail(false);
+
+  const resetInputFields = () => {
+    setEmail("");
+    setTitle("");
+    setMessage("");
+  };
 
   return (
     <div className={styles.SummaryPageContainer}>
@@ -86,35 +127,40 @@ export default function SummaryPage() {
 
           <div className={styles.contactInputContainer}>
             <InputField
-              label="Your Email"
+              label="Your Email or Contact"
               value={email}
-              onChange={(e) => {
-                setEmail(e.value);
-              }}
+              onChange={setEmail}
               placeholder="eg. minholim@outlook.com"
               isInput={true}
-            />{" "}
+            />
             <InputField
               label="Title"
               value={title}
-              onChange={(e) => {
-                setTitle(e.value);
-              }}
+              onChange={setTitle}
               placeholder="eg. What an Awesome Website!"
               isInput={true}
             />
             <InputField
               label="Context"
               value={message}
-              onChange={(e) => {
-                setMessage(e.value);
-              }}
+              onChange={setMessage}
               placeholder="eg. Do you want to build a snowman?"
               isInput={false}
             />
           </div>
 
-          <button className={styles.contactSendButton} data-tip="Send an Email">
+          <span
+            className={styles.contactSendButton}
+            onClick={() => {
+              const submit = onSubmit(email, title, message);
+              if (submit) {
+                resetInputFields();
+                setSentEmail(true);
+              } else {
+                setSentEmail(false);
+              }
+            }}
+          >
             <Image
               src="/sent-icon.svg"
               alt="Sent Icon"
@@ -123,8 +169,25 @@ export default function SummaryPage() {
               className={styles.contactSendImage}
             />
             <a className={styles.contactSendButtonText}>Send</a>
-          </button>
+          </span>
         </div>
+        <Popup open={sentEmail} closeOnDocumentClick modal onClose={closeModal}>
+          <div className={styles.modal}>
+            <button className={styles.close} onClick={closeModal}>
+              &times;
+            </button>
+            <div className={styles.header}> ✅ Success </div>
+            <div className={styles.content}>
+              Thank you for sending me an email. <br />I will get back to you as
+              soon as possible 😊
+            </div>
+            <div className={styles.actions}>
+              <span className={styles.closebutton} onClick={closeModal}>
+                close modal
+              </span>
+            </div>
+          </div>
+        </Popup>
       </div>
     </div>
   );
