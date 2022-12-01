@@ -14,8 +14,11 @@ const isValidEmail = (email: string) => {
 };
 
 const onSubmit = (email: string, title: string, message: string) => {
-  console.log(email, title, message);
   if (title && email && message) {
+    if (!isValidEmail(email)) {
+      return false;
+    }
+
     const serviceId = process.env.SERVICEID;
     const templateId = process.env.TEMPLATEID;
     const userId = process.env.USERID;
@@ -24,8 +27,6 @@ const onSubmit = (email: string, title: string, message: string) => {
       email,
       message,
     };
-
-    console.log(serviceId, templateId, templateParams, userId);
 
     const result = emailjs
       .send(serviceId, templateId, templateParams, userId)
@@ -38,6 +39,30 @@ const onSubmit = (email: string, title: string, message: string) => {
     return result;
   }
   return false;
+};
+
+const Modal = (
+  open: boolean,
+  closeModal: () => void,
+  header: string,
+  content: string
+) => {
+  return (
+    <Popup open={open} closeOnDocumentClick modal onClose={closeModal}>
+      <div className={styles.modal}>
+        <button className={styles.close} onClick={closeModal}>
+          &times;
+        </button>
+        <div className={styles.header}>{header}</div>
+        <div className={styles.content}>{content}</div>
+        <div className={styles.actions}>
+          <span className={styles.closebutton} onClick={closeModal}>
+            Close
+          </span>
+        </div>
+      </div>
+    </Popup>
+  );
 };
 
 const InputField = ({
@@ -88,8 +113,9 @@ export default function SummaryPage() {
   const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
-  const [sentEmail, setSentEmail] = useState(false);
-  const closeModal = () => setSentEmail(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalStatus, setModalStatus] = useState({ header: "", content: "" });
+  const closeModal = () => setIsModalOpen(false);
 
   const resetInputFields = () => {
     setEmail("");
@@ -155,9 +181,19 @@ export default function SummaryPage() {
               const submit = onSubmit(email, title, message);
               if (submit) {
                 resetInputFields();
-                setSentEmail(true);
+                setIsModalOpen(true);
+                setModalStatus({
+                  header: "✅ Success",
+                  content:
+                    "Thank you for sending me an email. I will get back to you as soon as possible 😊",
+                });
               } else {
-                setSentEmail(false);
+                setIsModalOpen(true);
+                setModalStatus({
+                  header: "❌ Failed",
+                  content:
+                    "Make sure you have entered all fields and valid email.",
+                });
               }
             }}
           >
@@ -171,23 +207,12 @@ export default function SummaryPage() {
             <a className={styles.contactSendButtonText}>Send</a>
           </span>
         </div>
-        <Popup open={sentEmail} closeOnDocumentClick modal onClose={closeModal}>
-          <div className={styles.modal}>
-            <button className={styles.close} onClick={closeModal}>
-              &times;
-            </button>
-            <div className={styles.header}> ✅ Success </div>
-            <div className={styles.content}>
-              Thank you for sending me an email. <br />I will get back to you as
-              soon as possible 😊
-            </div>
-            <div className={styles.actions}>
-              <span className={styles.closebutton} onClick={closeModal}>
-                close modal
-              </span>
-            </div>
-          </div>
-        </Popup>
+        {Modal(
+          isModalOpen,
+          closeModal,
+          modalStatus.header,
+          modalStatus.content
+        )}
       </div>
     </div>
   );

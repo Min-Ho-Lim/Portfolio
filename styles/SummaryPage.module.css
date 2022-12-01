@@ -190,7 +190,8 @@
   font-size: 12px;
   background: #2b2b32;
   border-radius: 20px;
-  width: max(min(40vw, 800px), 200px);
+  width: max(min(40vw, 500px), 200px);
+  border: 1px solid gray;
 }
 .modal > .header {
   width: 100%;
