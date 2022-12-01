@@ -1,0 +1,27 @@
+/* create responsive css */
+@media (min-width: 500px) {
+  .iconBarContainer {
+    position: relative;
+    /* align children horizontally */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .iconBarStickBar {
+    /* position: absolute; */
+    width: 15vw;
+    border: 1.5px solid #fffffe;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+}
+
+.icon {
+  /* change mouse cursor */
+  cursor: pointer;
+}

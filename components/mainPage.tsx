@@ -59,9 +59,9 @@ export default function MainPage() {
 
         <ScrollDown />
       </div>
-      {arrayOfTen.map((_, i) => (
+      {/* {arrayOfTen.map((_, i) => (
         <span key={i} className={styles.span} />
-      ))}
+      ))} */}
     </div>
   );
 }
