@@ -50,7 +50,7 @@ export default function MainPage() {
           <a className={styles.titletextgradient}> Min Ho Lim</a>
         </div>
         <p className={styles.subtitle}>
-          I'm a <b>software engineer 👨‍💻</b> based in <b>the United States</b>
+          I am a <b>software engineer 👨‍💻</b> based in <b>the United States</b>
         </p>
 
         <div className={styles.mainButton}>

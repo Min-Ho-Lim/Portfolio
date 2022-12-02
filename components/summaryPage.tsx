@@ -19,9 +19,9 @@ const onSubmit = (email: string, title: string, message: string) => {
       return false;
     }
 
-    const serviceId = process.env.SERVICEID;
-    const templateId = process.env.TEMPLATEID;
-    const userId = process.env.USERID;
+    const serviceId = process.env.SERVICEID || "";
+    const templateId = process.env.TEMPLATEID || "";
+    const userId = process.env.USERID || "";
     const templateParams = {
       title,
       email,
